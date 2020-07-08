@@ -5,9 +5,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <curl/curl.h>
+#include "GetData.h"
 // Including libcurl library to use the request methods
 
-#define API_KEY "AIzaSyBgxTSi0WNEyNNN7JyuimLMgk9XMGT2bjI";
+//#define API_KEY "AIzaSyBgxTSi0WNEyNNN7JyuimLMgk9XMGT2bjI"
 // An API key for connection
 void GetFromApi(char* id){
     FILE* data = fopen("temp.json", "w");
