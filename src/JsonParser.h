@@ -1,0 +1,1 @@
+char* GetFromJSON(char* target);
