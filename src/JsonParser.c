@@ -2,14 +2,14 @@
 #include <stdio.h>
 #include <json-c/json.h>
 #include "JsonParser.h"
-
+#include <string.h>
 
 int GetFromJSON_statistics(char* target){
     FILE* json = fopen("temp.json", "r");
     char buffer[2048];
-    
-   
-    
+
+
+
     fread(buffer, 2048, 1, json);
     //printf("Buffer: %s \n", buffer);
     json_object *parsed_json;
@@ -26,26 +26,21 @@ int GetFromJSON_statistics(char* target){
     json_object_object_get_ex(jarray, "statistics", &statistics);
 
     printf("Object: %s \n", json_object_get_string(statistics));
-    if(target == "views"){
+    if(strcmp(target, "views") == 0){
         json_object_object_get_ex(statistics, "viewCount", &count);
         printf("Views: %s \n", json_object_to_json_string(count));
-    }else if(target == "likes"){
+    }else if(strcmp(target, "likes") == 0){
         json_object_object_get_ex(statistics, "likeCount", &count);
         printf("Likes: %s \n", json_object_to_json_string(count));
-    }else if(target == "dislikes"){
+    }else if(strcmp(target, "dislikes") == 0){
         json_object_object_get_ex(statistics, "dislikeCount", &count);
         printf("Dislikes: %s \n", json_object_to_json_string(count));
-    }else if(target == "comments"){
+    }else if(strcmp(target, "comments") == 0){
         json_object_object_get_ex(statistics, "commentCount", &count);
         printf("Comments: %s \n", json_object_to_json_string(count));
     }
-    
+
     int res = json_object_get_int(count);
     fclose(json);
     return res;
 }
-
-    
-    
-
-
