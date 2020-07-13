@@ -4,7 +4,7 @@
 #include "JsonParser.h"
 #include <string.h>
 
-int GetFromJSON_statistics(char* target){
+int GetFromJSON_statistics(int target){
     FILE* json = fopen("temp.json", "r");
     char buffer[2048];
 
@@ -26,16 +26,16 @@ int GetFromJSON_statistics(char* target){
     json_object_object_get_ex(jarray, "statistics", &statistics);
 
     printf("Object: %s \n", json_object_get_string(statistics));
-    if(strcmp(target, "views") == 0){
+    if(target == 0){
         json_object_object_get_ex(statistics, "viewCount", &count);
         printf("Views: %s \n", json_object_to_json_string(count));
-    }else if(strcmp(target, "likes") == 0){
+    }else if(target == 1){
         json_object_object_get_ex(statistics, "likeCount", &count);
         printf("Likes: %s \n", json_object_to_json_string(count));
-    }else if(strcmp(target, "dislikes") == 0){
+    }else if(target == 2){
         json_object_object_get_ex(statistics, "dislikeCount", &count);
         printf("Dislikes: %s \n", json_object_to_json_string(count));
-    }else if(strcmp(target, "comments") == 0){
+    }else if(target == 3){
         json_object_object_get_ex(statistics, "commentCount", &count);
         printf("Comments: %s \n", json_object_to_json_string(count));
     }
