@@ -1,1 +1,1 @@
-int GetFromJSON_statistics(char* target);
+int GetFromJSON_statistics(int target);

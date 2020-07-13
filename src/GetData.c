@@ -10,16 +10,16 @@
 
 //#define API_KEY "AIzaSyBgxTSi0WNEyNNN7JyuimLMgk9XMGT2bjI"
 // An API key for connection
-void GetFromApi(char* id){
+void GetFromApi(const char* id){
     FILE* data = fopen("temp.json", "w");
     // Creating json file fow saving data
     CURL *curl = curl_easy_init();
     // Initialization cURL
-    
+
     char url[256];
     sprintf(url, "https://www.googleapis.com/youtube/v3/videos?id=%s&key=%s&part=statistics", id, API_KEY);
     //Making an url for our request
-    
+
     CURLcode res1 = curl_easy_setopt(curl, CURLOPT_URL, url);
     //Set our url for request
     //printf("1: %s \n", curl_easy_strerror(res1));
@@ -37,10 +37,8 @@ void GetFromApi(char* id){
     CURLcode res5 = curl_easy_perform(curl);
     //make the request
     //printf("5: %s \n", curl_easy_strerror(res5));
-    
+
     curl_easy_cleanup(curl);
     fclose(data);
     //deallocation
 }
-
-
