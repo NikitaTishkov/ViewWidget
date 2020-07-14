@@ -4,10 +4,7 @@
 #include "JsonParser.h"
 #include <string.h>
 
-<<<<<<< HEAD
 
-=======
->>>>>>> master
 int GetFromJSON_statistics(int target){
     FILE* json = fopen("temp.json", "r");
     char buffer[2048];
