@@ -1,18 +1,18 @@
 # Youtube video info viewer
 
 ## Short description
-  This software is created for tracking on youtube video statistics such as: likes, dislikes and comments.
-The programm is under development, so now it can only show video statistics by id without aoutupdating
+  This software is created for tracking on Youtube video statistics such as: likes, dislikes and comments.
+The program is under development, so now it can only show video statistics by id without auto-updating
 
 ## Project vision
-  In future it will be connected by user google account and can 
-track all chanel and video statistics in realtime
-## Instalation
+  In future it will be connected by user Google account and can 
+track all channel and video statistics in real-time
+## Installation
   Firstly you need to have curl, json-c and gtk3 external libraries on your Linux machine
   
   #### Build & Run 
   For building go to root directory and type `make` via terminal
-  Now youy can run "Viewer": `./vw`
+  Now you can run "Viewer": `./vw`
   
   #### Clean
   If you want to clear all unnecessary files, run `make clean`
@@ -27,6 +27,6 @@ track all chanel and video statistics in realtime
   Than copy video id(ex:**vHiFxhPs2TQ**) to special pole
   Press _Get info_
   
-## Developer docs
+## Developer's docs
   For making documentation go to `/doc` directory and run `make [format]` (For example `make html`)
   now you can find your documentation files in `/_build`
