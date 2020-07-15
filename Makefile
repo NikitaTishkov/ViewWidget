@@ -4,13 +4,13 @@ LDFLAGS := -lcurl -ljson-c `pkg-config --cflags --libs gtk+-3.0`
 CFLAGS := -o2 -std=c17 -rdynamic
 SRC := main.c JsonParser.c GetData.c
 INC := ./inc
-BUILDDIR := build
+BUILDDIR := .build
 
 .PHONY: clean tidy
 
 
 
-$(BUILDDIR)/$(TARGET): $(addprefix $(BUILDDIR)/,$(SRC:.c=.o))
+$(TARGET): $(addprefix $(BUILDDIR)/,$(SRC:.c=.o))
 	$(CC) $(CFLAGS)  $^ -o $@ $(LDFLAGS)
 
 $(BUILDDIR)/main.o: src/main.c $(BUILDDIR)
@@ -28,6 +28,8 @@ $(BUILDDIR):
 
 clean:
 	rm -f $(BUILDDIR)/$(SRC:.o=.c)
+	rm -f temp.json
 
 tidy:
 	rm -rf $(BUILDDIR)
+	rm -f $(TARGET)

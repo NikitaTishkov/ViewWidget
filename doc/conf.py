@@ -15,7 +15,7 @@
 # import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
-
+import subprocess as sp
 import pathlib as pth
 # directory containing current file
 curdir = pth.Path(__file__).resolve().parent
@@ -55,9 +55,20 @@ extensions = [
 
 # Path to the root of the C source files for Hawkmoth
 cautodoc_root = str(projdir)
+# Configuring clang directive
+#cautodoc_clang = '-I/lib/clang/10.0.0/include, -DHAWKMOTH'
+#cautodoc_clang += ',-I../inc, -I../src, -std=c17'
+# Custom args
+#libs = [`gtk+-3.0`]
 
+#ret = sp.run([`pkg--config`, `--cflags`] + libs, stdout=sp.PIPE, text=TRUE)
+#ret.check_returncode()
+#extra_flags = ret.stdout.strip().replace(' ', ',')
+#print(f'Collected extra cflags: {extra_flags}')
+
+#cautodoc_clang += ',' + extra_flags
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
+#templates_path = ['_templates']
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:

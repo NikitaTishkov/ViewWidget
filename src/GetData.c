@@ -10,15 +10,19 @@
 
 
 
-void GetFromApi(const char* id)
+int GetFromApi(const char* id)
 {
+    int errcode = 0;
+
     FILE* data = fopen("temp.json", "w");
     // Creating json file fow saving data
     CURL *curl = curl_easy_init();
     // Initialization cURL
 
     char url[256];
+
     //Making an url for our request
+
     sprintf(url, "https://www.googleapis.com/youtube/v3/videos?id=%s&key=%s&part=statistics", id, API_KEY);
 
     //Set our url for request
@@ -27,6 +31,7 @@ void GetFromApi(const char* id)
     //Checking for correct setting arguments to cURL object
     if (res1 != CURLE_OK) {
         fprintf(stderr ,"Setting url error: %s \n", curl_easy_strerror(res1));
+        errcode = 1;
     }
 
     //Set a type of request to GET
@@ -35,6 +40,7 @@ void GetFromApi(const char* id)
 
     if (res2 != CURLE_OK) {
         fprintf(stderr ,"Setting url error: %s \n", curl_easy_strerror(res2));
+        errcode = 2;
     }
 
     //Set file for saving data
@@ -42,6 +48,7 @@ void GetFromApi(const char* id)
 
     if (res3 != CURLE_OK) {
         fprintf(stderr ,"Setting url error: %s \n", curl_easy_strerror(res3));
+        errcode = 3;
     }
 
     //Swigtch on verbose mode
@@ -49,17 +56,22 @@ void GetFromApi(const char* id)
 
     if (res4 != CURLE_OK) {
         fprintf(stderr ,"Setting url error: %s \n", curl_easy_strerror(res4));
+        errcode = 4;
     }
+
 
     //making the request
     CURLcode res5 = curl_easy_perform(curl);
 
     if (res5 != CURLE_OK) {
         fprintf(stderr ,"Setting url error: %s \n", curl_easy_strerror(res5));
+        errcode = 5;
     }
+
+
 
     //deallocation:
     curl_easy_cleanup(curl);
     fclose(data);
-
+    return errcode;
 }
