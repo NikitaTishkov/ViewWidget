@@ -25,8 +25,8 @@ projdir = curdir.parent
 # -- Project information -----------------------------------------------------
 
 project = u'Youtube video info viewer'
-copyright = u'2020, NTishkov'
-author = u'NTishkov'
+copyright = u'2020, Nikita Tishkov'
+author = u'Nikita Tishkov'
 
 # The short X.Y version
 version = u''

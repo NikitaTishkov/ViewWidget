@@ -27,9 +27,8 @@ $(BUILDDIR):
 	cp ViewWidget.glade $(BUILDDIR)/ViewWidget.glade
 
 clean:
-	rm -f $(BUILDDIR)/$(SRC:.o=.c)
+	rm -rf $(BUILDDIR)
 	rm -f temp.json
 
-tidy:
-	rm -rf $(BUILDDIR)
+tidy: clean
 	rm -f $(TARGET)
