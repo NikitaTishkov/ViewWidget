@@ -1,1 +1,0 @@
-int GetFromJSON_statistics(char* target);
